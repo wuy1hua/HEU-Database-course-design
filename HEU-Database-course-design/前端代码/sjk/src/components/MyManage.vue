@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            &nbsp;&nbsp; 哈尔滨工程大学外卖平台---后台管理
+            &nbsp;&nbsp; 川美食广场外卖平台---后台管理
         </div>
         <div class="body">
             <div class="liner">
@@ -10,13 +10,9 @@
 
                     <el-menu-item index="1">
                         <i class="el-icon-s-shop"></i>
-                        <span slot="title">店铺管理</span>
+                        <span slot="title">菜品管理</span>
                     </el-menu-item>
 
-                    <el-menu-item index="2">
-                        <i class="el-icon-s-custom"></i>
-                        <span slot="title">服务员管理</span>
-                    </el-menu-item>
 
                     <el-menu-item index="3">
                         <i class="el-icon-s-check"></i>
@@ -59,9 +55,7 @@
                     <manageshop></manageshop>
                 </div>
 
-                <div id="manageserver" v-show="active == 2">
-                    <manageserver></manageserver>
-                </div>
+
 
                 <div id="managedispatcher" v-show="active == 3">
                     <managedispatcher></managedispatcher>
@@ -92,7 +86,6 @@
 
 <script>
 import manageshop from '@/components/ManageShop.vue'
-import manageserver from '@/components/ManageServer.vue'
 import managedispatcher from '@/components/ManageDispatcher.vue'
 import wuliuended from '@/components/ManageWuliu/WuliuEnded.vue'
 import wuliuunended from '@/components/ManageWuliu/WuliuUnended.vue'
@@ -102,7 +95,6 @@ import orderunsend from '@/components/ManageOrder/UnSend.vue'
 export default {
     components: {
         manageshop: manageshop,
-        manageserver: manageserver,
         managedispatcher: managedispatcher,
         wuliuended: wuliuended,
         wuliuunended: wuliuunended,
@@ -127,12 +119,11 @@ export default {
 .header {
     width: 100%;
     height: 10vh;
-    /* text-align: center; */
+    display: flex;
     line-height: 10vh;
     font-size: 25px;
     font-weight: 800;
-    background-color: #e3e3e3;
-    /* padding-left: 100px; */
+    background-color: gray;
 }
 
 .body {

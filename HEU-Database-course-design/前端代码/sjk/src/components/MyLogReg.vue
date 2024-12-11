@@ -2,7 +2,7 @@
     <div class="container">
         <div class="login_box">
             <div class="head">
-                哈工程外卖平台
+                四川大学外卖平台
             </div>
             <!-- 登录 -->
             <div v-show="target == 1">
@@ -38,7 +38,7 @@
         <!-- 注册表单 -->
         <div class="reg_box" v-show="target == 2">
             <div class="head">
-                哈工程外卖平台
+                川大美食广场外卖平台
             </div>
             <div>
                 <el-form class="reg_form" :model="reg_form" :rules="reg_rules" ref="reg_form">
@@ -88,7 +88,7 @@
 <!-- 找回密码 -->
         <div class="forget_box" v-show="target == 3">
             <div class="head">
-                哈工程外卖平台
+                川大美食广场外卖平台
             </div>
             <div>
                 <el-form class="reg_form" :model="findback_form" :rules="findback_rules" ref="findback_form">
@@ -176,10 +176,11 @@ export default {
             },
             login_rules: {
                 userortel: [
-                    { required: true, message: '请输入电话', trigger: 'blur' }, { validator: checkMobile, trigger: 'blur' }],
-                password: [
-                    { required: true, message: '请输入密码', trigger: 'blur' }]
+                    { required: true, message: '请输入电话', trigger: 'blur' },
+                    { validator: checkMobile, trigger: 'blur' }
+                ]
             },
+
             reg_rules: {
                 username: [{ required: true, message: '请设置用户名', trigger: 'blur' }],
                 password: [{ required: true, message: '请设置密码', trigger: 'blur' }, { validator: checkPassword, trigger: 'blur' }],

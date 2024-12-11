@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="header">
-            店铺管理
+            菜品管理
         </div>
         <div class="body">
-            <el-table :data="tableData" style="width: 89%" class="table">
-                <el-table-column prop="shop_name" label="店铺名称" width="200" align="center">
+            <el-table :data="tableData" style="width: 100%" class="table">
+                <el-table-column prop="shop_name" label="菜品名称" width="150" align="center">
                 </el-table-column>
-                <el-table-column prop="price" label="产品单价" width="200" align="center">
+                <el-table-column prop="price" label="菜品单价" width="150" align="center">
                 </el-table-column>
                 <el-table-column prop="sale" label="月销量" width="200" align="center">
                 </el-table-column>
@@ -22,18 +22,18 @@
                 </el-table-column>
                 <el-table-column width="120" align="center">
                     <template slot="header">
-                        <el-button icon="el-icon-plus" size="small" type="success" @click="showdia_add()">添加店铺
+                        <el-button icon="el-icon-plus" size="small" type="success" @click="showdia_add()">添加菜品
                         </el-button>
                     </template>
                 </el-table-column>
             </el-table>
 
-            <el-dialog title="添加店铺" :visible.sync="dia_add" width="30%">
+            <el-dialog title="添加菜品" :visible.sync="dia_add" width="30%">
                 <el-form ref="add_form" :model="add_form" label-width="100px" :rules="add_form_rules">
-                    <el-form-item label="店铺名称：" prop="shop_name">
+                    <el-form-item label="菜品名称：" prop="shop_name">
                         <el-input v-model="add_form.shop_name"></el-input>
                     </el-form-item>
-                    <el-form-item label="产品单价：" prop="price">
+                    <el-form-item label="菜品单价：" prop="price">
                         <el-input v-model="add_form.price"></el-input>
                     </el-form-item>
                     <el-form-item label="月销量：" prop="m_sale_v">
@@ -47,12 +47,12 @@
                 </div>
             </el-dialog>
 
-            <el-dialog title="修改店铺" :visible.sync="dia_chg" width="30%">
+            <el-dialog title="修改菜品" :visible.sync="dia_chg" width="30%">
                 <el-form ref="form" :model="chg_form" label-width="100px">
-                    <el-form-item label="店铺名称：">
+                    <el-form-item label="菜品名称：">
                         <span>{{ chg_form.shop_name }}</span>
                     </el-form-item>
-                    <el-form-item label="产品单价：">
+                    <el-form-item label="菜品单价：">
                         <el-input v-model="chg_form.price"></el-input>
                     </el-form-item>
                     <el-form-item label="月销量：">
@@ -65,9 +65,9 @@
                     </el-button>
                 </div>
             </el-dialog>
-            <el-dialog title="删除店铺" :visible.sync="dia_dlt" width="30%">
+            <el-dialog title="删除菜品" :visible.sync="dia_dlt" width="30%">
                 <div>
-                    确定删除此店铺吗？
+                    确定删除此菜品吗？
                 </div>
                 <div style="text-align: center;">
                     <el-button type="primary" @click="deleteshop()">

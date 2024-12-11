@@ -7,7 +7,7 @@
             <el-table :data="tableData" style="width: 100%" class="table" border>
                 <el-table-column prop="order_id" label="订单编号" width="80" align="center">
                 </el-table-column>
-                <el-table-column prop="shop_name" label="店铺" width="100" align="center">
+                <el-table-column prop="shop_name" label="菜品" width="100" align="center">
                 </el-table-column>
                 <el-table-column prop="order_money" label="订单价格" width="80" align="center">
                 </el-table-column>

@@ -1,31 +1,13 @@
 <template>
     <div>
         <div class="header">
-            &nbsp;&nbsp; 哈尔滨工程大学外卖平台|网站作者：吴方
+            &nbsp;&nbsp; 川大美食广场外卖平台
         </div>
         <div class="body">
             <!-- 左侧导航栏 -->
             <div class="liner">
                 <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff"
                     active-text-color="#ffd04b" @select="handleselect">
-                    <!-- <el-submenu index="1">
-                        <template slot="title">
-                            <i class="el-icon-location"></i>
-                            <span>导航一</span>
-                        </template>
-                        <el-menu-item-group>
-                            <template slot="title">分组一</template>
-                            <el-menu-item index="1-1">选项1</el-menu-item>
-                            <el-menu-item index="1-2">选项2</el-menu-item>
-                        </el-menu-item-group>
-                        <el-menu-item-group title="分组2">
-                            <el-menu-item index="1-3">选项3</el-menu-item>
-                        </el-menu-item-group>
-                        <el-submenu index="1-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="1-4-1">选项1</el-menu-item>
-                        </el-submenu>
-                    </el-submenu> -->
                     <el-menu-item index="1">
                         <i class="el-icon-menu"></i>
                         <span slot="title">逛店铺</span>
@@ -112,10 +94,51 @@ export default {
         };
     },
     methods: {
-        handleselect(index) {
-            this.active = index;
+            // 获取餐品数据
+            getData() {
+                this.$axios.get("/api/user/shop").then((res) => {
+                    if (res.data.status === 200) {
+                        this.tableData = res.data.tabledata;
+                        this.filteredTableData = res.data.tabledata;  // 初始时不过滤，显示所有数据
+                    }
+                }).catch(error => {
+                    console.error("获取餐品数据失败", error);
+                });
+            },
+
+            // 处理搜索功能
+            handleSearch() {
+                const query = this.searchQuery.trim().toLowerCase();
+                if (query) {
+                    this.filteredTableData = this.tableData.filter(item => {
+                        return item.shop_name.toLowerCase().includes(query);
+                    });
+                } else {
+                    this.filteredTableData = this.tableData;  // 如果没有输入内容，显示全部数据
+                }
+            },
+
+            // 显示订餐表单
+            showdia(row) {
+                this.form.shop_name = row.shop_name;
+                this.form.order_money = row.price;
+                this.dialog = true;
+            },
+
+            // 提交订餐
+            add() {
+                this.$axios.post("/api/user/addorder", this.form).then((res) => {
+                    if (res.data.status === 200) {
+                        this.$message({
+                            message: "成功下单",
+                            type: "success"
+                        });
+                        this.dialog = false;
+                        this.getData();  // 重新获取数据以刷新表格
+                    }
+                });
+            }
         }
-    },
 }  
 </script>
 
